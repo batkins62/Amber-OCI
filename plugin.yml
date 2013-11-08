@@ -1,0 +1,101 @@
+name: OCI
+version: '1.0.1'
+main: 'com.creepercountry.oci.main.OCIPlugin'
+description: 'Office of Creeper country Intelligence'
+author: stealth62
+website: 'http://forums.bukkit.org/threads/MyPlugin.31337/'
+depend:
+  - Vault
+commands:
+  intel:
+    description: 'main command executor'
+    aliases:
+      - intelligence
+      - oci
+    permission: ct.command.intel
+    usage: 'Syntax error! Simply type /intel help to get started.'
+permissions:
+  'oci.*':
+    description: 'Gives access to all CTTowns actions'
+    children:
+      'oci.command.*': true
+  'oci.command.*':
+    description: 'any and every command.'
+    children:
+      oci.command.intel: true
+      oci.transmition.*: true
+      oci.command.basic: true
+      oci.command.body: true
+  'oci.command.basic':
+    description: 'basic set of commands should be safe for the everyday user.'
+    children:
+      oci.command.intel: true
+      oci.command.read: true
+      'oci.help.*': true
+  oci.command.intel:
+    description: 'just gives permission to USE /intel, without this perm, no commands will work for player under this executor'
+    default: true
+  oci.command.body:
+    description: 'creates the order body'
+    default: op
+  oci.command.list:
+    description: 'list of all the towns.'
+    default: true
+  'oci.transmition.*':
+    description: 'all the transmition commands'
+    children:
+      oci.transmition.gamma: true
+      oci.transmition.black: true
+      oci.transmition.red: true
+      oci.transmition.white: true
+      oci.transmition.eyesonlytopsecret: true
+      oci.transmition.classified: true
+      oci.transmition.restricted: true
+      oci.transmition.secret: true
+      oci.transmition.na: true
+  oci.transmition.gamma:
+    description: 'highest code'
+    default: op
+  oci.transmition.black:
+    description: 'high code'
+    default: op
+  oci.transmition.red:
+    description: 'low code'
+    default: op
+  oci.transmition.white:
+    description: 'lowest code'
+    default: true
+  oci.transmition.eyesonlytopsecret:
+    description: 'highest classification'
+    default: op
+  oci.transmition.classified:
+    description: 'high classification'
+    default: op
+  oci.transmition.secret:
+    description: 'moderate classification'
+    default: op
+  oci.transmition.restricted:
+    description: 'low classification'
+    default: op
+  oci.transmition.na:
+    description: 'lowest classification'
+    default: true
+  'oci.help.*':
+    description: 'all help commands'
+    children:
+      oci.command.help: true
+      oci.help.body: true
+      oci.help.intel: true
+      oci.help.order: true
+  oci.command.help:
+    description: 'access the help command.'
+    default: true
+  oci.help.body:
+    description: 'view body help lines.'
+    default: true
+  oci.help.intel:
+    description: 'view intel help lines.'
+    default: true
+  oci.help.order:
+    description: 'view order help lines.'
+    default: true
